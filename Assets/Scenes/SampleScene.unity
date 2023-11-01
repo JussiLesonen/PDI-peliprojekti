@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 458622521}
   - component: {fileID: 458622520}
   m_Layer: 0
-  m_Name: FreeLook Camera
+  m_Name: ASD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1195,7 +1195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758696411}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050822634, y: 0.91054475, z: -0.1177468, w: 0.39301524}
+  m_LocalRotation: {x: 0.05082263, y: 0.91054475, z: -0.1177468, w: 0.39301524}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
