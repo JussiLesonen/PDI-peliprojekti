@@ -44,31 +44,6 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        var forward = Input.GetKey(KeyCode.W);
-        var backward = Input.GetKey(KeyCode.S);
-        var left = Input.GetKey(KeyCode.A);
-        var right = Input.GetKey(KeyCode.D);
-
-        if (forward || backward || left || right)
-        {
-            speed += Time.deltaTime * 2f;
-        }
-        else
-        {
-            speed -= Time.deltaTime * 4f;
-        }
-
-        if (speed >= 6)
-        {
-            speed = 6;
-        }
-        else if (speed <= 0)
-        {
-            speed = 0;
-        }
-
-        Debug.Log(speed);
-
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
