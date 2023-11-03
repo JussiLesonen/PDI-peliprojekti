@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
+    public static bool isDead = false;
+
     public CharacterController controller;
     public Transform cam;
+    public CinemachineFreeLook playerCam;
 
     public float speed;
     public float gravity = -9.81f;
@@ -52,6 +56,11 @@ public class Player : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+
+        if (isDead)
+        {
+            playerCam.Follow = null;
         }
     }
 }
