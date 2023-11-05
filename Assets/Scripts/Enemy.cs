@@ -6,11 +6,11 @@ public class Enemy : MonoBehaviour
 {
     public Transform player;
     public float moveSpeed = 3.0f;
-    public float detectionRange = 10.0f;
+    public float detectionRange = 5.0f;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.Find("Player").transform;
     }
 
     void Update()
