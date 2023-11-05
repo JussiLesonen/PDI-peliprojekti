@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Enemy.cs.meta
-guid: 807cd54bbe33f6044a5132f88c87d667
-========
-guid: b857799de418ad14b88e712b6ac74633
->>>>>>>> origin/experimental:Assets/Scripts/ItemCollector.cs.meta
+guid: 2482520bc19675d44b227fa51cef7d27
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
