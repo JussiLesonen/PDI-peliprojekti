@@ -11,7 +11,14 @@ public class EventManager : MonoBehaviour
 
     private void Update()
     {
-        playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
+        if (ColorButton.defaultColorChanged == false)
+        {
+            playerGraphics.GetComponent<Renderer>().material = Resources.Load("Default Player") as Material;
+        }
+        else
+        {
+            playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
+        }
     }
 
     public void Customization()

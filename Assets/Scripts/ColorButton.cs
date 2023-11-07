@@ -6,7 +6,7 @@ public class ColorButton : MonoBehaviour
 {
     int ID;
 
-    static bool defaultColorChanged = false;
+    public static bool defaultColorChanged = false;
 
     void Start()
     {
@@ -39,10 +39,8 @@ public class ColorButton : MonoBehaviour
 
         defaultColorChanged = true;
 
-        Debug.Log("Changed color to " + name);
+        Debug.Log("Changed player color to " + name);
 
         EventManager.color = name;
-
-        PlayerPrefs.SetString("PlayerColor", name);
     }
 }
