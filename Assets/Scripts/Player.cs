@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] AudioSource jumpSound;
+
     public static bool isDead = false;
 
     public CharacterController controller;
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            jumpSound.Play();
         }
 
         //gravity
