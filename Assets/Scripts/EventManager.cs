@@ -1,11 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
-    void Start()
+    public static string color;
+
+    public GameObject playerGraphics;
+
+    private void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (ColorButton.defaultColorChanged == false)
+        {
+            playerGraphics.GetComponent<Renderer>().material = Resources.Load("Default Player") as Material;
+        }
+        else
+        {
+            playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
+        }
+    }
+
+    public void Customization()
+    {
+        SceneManager.LoadScene("Customization");
     }
 }
