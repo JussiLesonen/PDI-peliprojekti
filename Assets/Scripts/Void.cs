@@ -51,4 +51,13 @@ public class Void : MonoBehaviour
 
         Time.timeScale = 1;
     }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Menu");
+
+        Player.isDead = false;
+
+        Time.timeScale = 1;
+    }
 }

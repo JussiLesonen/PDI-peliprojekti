@@ -9,6 +9,11 @@ public class EventManager : MonoBehaviour
 
     public GameObject playerGraphics;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update()
     {
         if (ColorButton.defaultColorChanged == false)
@@ -19,10 +24,5 @@ public class EventManager : MonoBehaviour
         {
             playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
         }
-    }
-
-    public void Customization()
-    {
-        SceneManager.LoadScene("Customization");
     }
 }

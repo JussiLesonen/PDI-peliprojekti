@@ -9,6 +9,6 @@ public class Customization : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("Menu");
     }
 }
