@@ -7,7 +7,10 @@ public class EventManager : MonoBehaviour
 {
     public static string color;
 
+    public GameObject pauseMenu;
     public GameObject playerGraphics;
+
+    public static bool isPaused = false;
 
     private void Start()
     {
@@ -24,5 +27,49 @@ public class EventManager : MonoBehaviour
         {
             playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
         }
+
+        if (pauseMenu.activeSelf == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = true;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = false;
+            }
+        }
+
+        if (isPaused)
+        {
+            pauseMenu.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+
+            Time.timeScale = 0;
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+
+            Cursor.lockState = CursorLockMode.Locked;
+
+            Time.timeScale = 1;
+        }
+    }
+
+    public void ResumeButton()
+    {
+        isPaused = false;
+    }
+
+    public void QuitButton()
+    {
+        isPaused = false;
+
+        SceneManager.LoadScene("Menu");
     }
 }
