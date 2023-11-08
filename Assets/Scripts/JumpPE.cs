@@ -24,7 +24,7 @@ public class JumpPE : MonoBehaviour
     {
         if (collision.gameObject.layer == 6f && jumpPECooldown < 0.1f)
         {
-            jumpPECooldown = 0.5f;
+            jumpPECooldown = 0.3f;
 
             jumpPE.Play();
 
