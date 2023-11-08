@@ -16,6 +16,9 @@ public class ItemCollector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
+            // Particle effect
+            Instantiate(Resources.Load("CoinCollect"), transform);
+
             Destroy(other.gameObject);
             coins++;
             Debug.Log("Coins: " + coins);
