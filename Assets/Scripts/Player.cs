@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
+    float jumpPECooldown;
+
     public float turnSmoothTime = 0.1f;
 
     void Update()

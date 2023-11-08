@@ -25,14 +25,23 @@ public class Void : MonoBehaviour
             timer = 3f;
         }
 
-        if (timer <= 0)
+        if (timer < 0.1f)
         {
             Time.timeScale = 0;
 
             endMenu.SetActive(true);
 
             Cursor.lockState = CursorLockMode.None;
+
+            Debug.Log("Paused");
         }
+
+        if (timer < 0)
+        {
+            timer = 0;
+        }
+
+        //Debug.Log(timer);
     }
 
     private void OnTriggerEnter(Collider other)

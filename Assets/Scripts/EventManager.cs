@@ -28,18 +28,21 @@ public class EventManager : MonoBehaviour
             playerGraphics.GetComponent<Renderer>().material = Resources.Load(color) as Material;
         }
 
-        if (pauseMenu.activeSelf == false)
+        if (!Player.isDead)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (pauseMenu.activeSelf == false)
             {
-                isPaused = true;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    isPaused = true;
+                }
             }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            else
             {
-                isPaused = false;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    isPaused = false;
+                }
             }
         }
 
@@ -55,9 +58,12 @@ public class EventManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
 
-            Cursor.lockState = CursorLockMode.Locked;
+            if (!Player.isDead)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
 
-            Time.timeScale = 1;
+                Time.timeScale = 1;
+            }
         }
     }
 
