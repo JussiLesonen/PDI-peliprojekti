@@ -27,6 +27,7 @@ public class ItemCollector : MonoBehaviour
             coinsText.text = "Coins: " + coins;
 
             coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
+            coinSound.volume = Options.masterVolume / 410;
             coinSound.Play();
         }
     }
