@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Options()
+    {
+        SceneManager.LoadScene("Options");
+    }
+
     public void Customization()
     {
         SceneManager.LoadScene("Customization");

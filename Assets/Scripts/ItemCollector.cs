@@ -12,6 +12,8 @@ public class ItemCollector : MonoBehaviour
     int coins = 0;
 
     [SerializeField] Text coinsText;
+
+    [System.Obsolete]
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coin"))
@@ -23,8 +25,9 @@ public class ItemCollector : MonoBehaviour
             coins++;
             Debug.Log("Coins: " + coins);
             coinsText.text = "Coins: " + coins;
+
+            coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
             coinSound.Play();
         }
     }
-
 }
