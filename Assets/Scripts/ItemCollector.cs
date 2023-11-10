@@ -9,7 +9,7 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] AudioSource coinSound;
 
-    int coins = 0;
+    public static int coins = 0;
 
     [SerializeField] Text coinsText;
 
