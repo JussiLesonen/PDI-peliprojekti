@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource jumpSound;
 
     public static bool isDead = false;
+    private bool isGravityFlipped = false;
 
     public CharacterController controller;
     public Transform cam;
@@ -30,6 +31,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // Gravity flip
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            isGravityFlipped = !isGravityFlipped;
+
+            // Change gravity direction
+            gravity = isGravityFlipped ? 9.81f : -9.81f;
+
+            velocity.y = 0f;
+        }
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -38,10 +49,18 @@ public class Player : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            jumpSound.Play();
+            if (!isGravityFlipped)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                jumpSound.Play();
+            }
+            if (isGravityFlipped)
+            {
+                velocity.y = -6;
+                jumpSound.Play();
+            }
         }
 
         //gravity
