@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Gravity flip
+        //Change hardcoded gravity change while on roof
         if (Input.GetKeyDown(KeyCode.H))
         {
             isGravityFlipped = !isGravityFlipped;
