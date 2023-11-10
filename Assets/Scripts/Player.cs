@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             velocity.y = 0f;
 
             //Vector3 currentRotation = transform.eulerAngles;
-            //transform.eulerAngles = new Vector3(currentRotation.x + 180f, currentRotation.y, currentRotation.z);
+            //transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, currentRotation.z);
 
         }
         //jump
