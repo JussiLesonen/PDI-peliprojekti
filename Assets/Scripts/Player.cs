@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     {
         // Gravity flip
         //Change hardcoded gravity change while on roof
+        //make sure you check isGrounded from the roof also
         if (Input.GetKeyDown(KeyCode.H))
         {
             isGravityFlipped = !isGravityFlipped;
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour
             gravity = isGravityFlipped ? 9.81f : -9.81f;
 
             velocity.y = 0f;
+
+            //Vector3 currentRotation = transform.eulerAngles;
+            //transform.eulerAngles = new Vector3(currentRotation.x + 180f, currentRotation.y, currentRotation.z);
+
         }
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -52,7 +57,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (!isGravityFlipped)
+            if (!isGravityFlipped && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpSound.Play();
