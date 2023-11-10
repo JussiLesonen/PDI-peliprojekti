@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        jumpSound.volume = Options.masterVolume;
+
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

@@ -13,6 +13,13 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] Text coinsText;
 
+    private void Update()
+    {
+        coinSound.volume = Options.masterVolume;
+
+        Debug.Log(Options.masterVolume);
+    }
+
     [System.Obsolete]
     private void OnTriggerEnter(Collider other)
     {
@@ -23,11 +30,10 @@ public class ItemCollector : MonoBehaviour
 
             Destroy(other.gameObject);
             coins++;
-            Debug.Log("Coins: " + coins);
+            //Debug.Log("Coins: " + coins);
             coinsText.text = "Coins: " + coins;
 
             coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
-            coinSound.volume = Options.masterVolume / 410;
             coinSound.Play();
         }
     }

@@ -72,6 +72,11 @@ public class EventManager : MonoBehaviour
         isPaused = false;
     }
 
+    public void OptionsButton()
+    {
+        SceneManager.LoadScene("Options");
+    }
+
     public void QuitButton()
     {
         isPaused = false;

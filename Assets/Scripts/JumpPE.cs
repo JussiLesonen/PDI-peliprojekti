@@ -17,6 +17,8 @@ public class JumpPE : MonoBehaviour
         {
             jumpPECooldown = 0;
         }
+
+        gameObject.GetComponent<AudioSource>().volume = Options.masterVolume;
     }
 
     [System.Obsolete]
