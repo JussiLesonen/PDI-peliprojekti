@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-
     [SerializeField] AudioSource coinSound;
 
     public static int coins = 0;
@@ -17,7 +16,7 @@ public class ItemCollector : MonoBehaviour
     {
         coinSound.volume = Options.masterVolume;
 
-        Debug.Log(Options.masterVolume);
+        //Debug.Log(Options.masterVolume);
     }
 
     [System.Obsolete]
