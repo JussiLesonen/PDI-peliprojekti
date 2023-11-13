@@ -5,14 +5,26 @@ using UnityEngine.EventSystems;
 
 public class Slider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject checkmark;
+
     bool hovering = false;
     bool holding = false;
+    bool muted = false;
 
-    float volume;
+    public static float volume;
 
     private void Start()
     {
         PlayerPrefs.GetFloat(name);
+
+        if (PlayerPrefs.GetInt("Mute") == 1)
+        {
+            muted = true;
+        }
+        else if (PlayerPrefs.GetInt("Mute") == 0)
+        {
+            muted = false;
+        }
 
         transform.localPosition = new Vector2(PlayerPrefs.GetFloat(name), 0);
 
@@ -52,6 +64,7 @@ public class Slider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.localPosition = new Vector2(Mathf.Clamp(transform.localPosition.x, -410, 410), 0);
         PlayerPrefs.SetFloat(name, transform.localPosition.x);
 
+        #region Volume logic
         if (transform.localPosition.x > 328)
         {
             volume = 1;
@@ -92,7 +105,35 @@ public class Slider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             volume = 0.1f;
         }
+        #endregion
 
-        Options.masterVolume = volume;
+        if (muted)
+        {
+            checkmark.SetActive(false);
+
+            PlayerPrefs.SetInt("Mute", 1);
+
+            Options.masterVolume = 0;
+        }
+        else
+        {
+            checkmark.SetActive(true);
+
+            PlayerPrefs.SetInt("Mute", 0);
+
+            Options.masterVolume = volume;
+        }
+    }
+
+    public void MuteButton()
+    {
+        if (!muted)
+        {
+            muted = true;
+        }
+        else if (muted)
+        {
+            muted = false;
+        }
     }
 }

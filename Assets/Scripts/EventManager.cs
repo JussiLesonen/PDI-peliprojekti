@@ -14,7 +14,14 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (PlayerPrefs.GetInt("Mute") == 1)
+        {
+            Options.masterVolume = 0;
+        }
+        else if (PlayerPrefs.GetInt("Mute") == 0)
+        {
+            Options.masterVolume = Slider.volume;
+        }
     }
 
     private void Update()

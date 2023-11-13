@@ -21,7 +21,7 @@ public class ItemCollector : MonoBehaviour
     {
         coinSound.volume = Options.masterVolume;
 
-        Debug.Log(Options.masterVolume);
+        //Debug.Log(Options.masterVolume);
     }
 
     [System.Obsolete]
