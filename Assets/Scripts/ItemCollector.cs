@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
+    void Start()
+    {
+        coins = 0;
+    }
 
     [SerializeField] AudioSource coinSound;
 
