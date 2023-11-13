@@ -6,6 +6,11 @@ public class OptionsMenu : MonoBehaviour
 {
     public GameObject optionsMenu;
 
+    private void Start()
+    {
+        optionsMenu.SetActive(false);
+    }
+
     public void OptionsWindow()
     {
         optionsMenu.SetActive(true);
