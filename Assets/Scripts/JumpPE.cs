@@ -29,6 +29,7 @@ public class JumpPE : MonoBehaviour
             jumpPECooldown = 0.3f;
 
             jumpPE.Play();
+            Debug.Log(jumpPECooldown);
 
             gameObject.GetComponent<AudioSource>().pitch = Random.RandomRange(4, 6);
             gameObject.GetComponent<AudioSource>().PlayOneShot(thud);
