@@ -18,7 +18,7 @@ public class Objectives : MonoBehaviour
     {
         if (ItemCollector.coins == 2 && canSpawn)
         {
-            Instantiate(Resources.Load("Coin"), transform.position, 
+            Instantiate(Resources.Load("Key"), transform.position, 
             Quaternion.Euler(Vector3.zero));
             canSpawn = false;
             objectiveText.text="Objectives: New objective";

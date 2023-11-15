@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - ColorBtn
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX
