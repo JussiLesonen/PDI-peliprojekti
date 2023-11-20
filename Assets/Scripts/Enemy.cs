@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private bool isPatrolling = false;
     private Vector3 originalPosition;
     public float patrolRange = 3.0f;
+    [SerializeField] AudioSource ShootingSound;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class Enemy : MonoBehaviour
             {
                 Shoot();
                 lastShootTime = Time.time;
+                ShootingSound.Play();
             }
         }
         else
