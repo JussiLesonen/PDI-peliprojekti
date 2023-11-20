@@ -8,10 +8,12 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource jumpSound;
 
     public static bool isDead = false;
+    private bool isGravityFlipped = false;
 
     public CharacterController controller;
     public Transform cam;
     public CinemachineFreeLook playerCam;
+
 
     public float speed;
     public float gravity = -9.81f;
@@ -28,20 +30,74 @@ public class Player : MonoBehaviour
 
     public float turnSmoothTime = 0.1f;
 
+
+
+
+
     void Update()
     {
-        //jump
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
+        jumpSound.volume = Options.masterVolume;
+        // Gravity flip
+        //Change hardcoded gravity change while on roof
+        //make sure you check isGrounded from the roof also
+        if (Input.GetKeyDown(KeyCode.H) && isGrounded)
         {
-            velocity.y = -2f;
+            isGravityFlipped = !isGravityFlipped;
+
+            // Change gravity direction
+            gravity = isGravityFlipped ? 9.81f : -9.81f;
+
+            //velocity.y = 0f;
+
+            
+            //transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, currentRotation.z + 180f);
+
+            //playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
+            UpdatePlayerCamFollowTarget();
+
+
+            
+
+
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        //jump
+        Vector3 currentRotation = transform.eulerAngles;
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        
+        if (!isGravityFlipped)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            jumpSound.Play();
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+        }
+        else
+        {
+            if (isGrounded && velocity.y > 0)
+            {
+                velocity.y = 2f;
+            }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (!isGravityFlipped && isGrounded)
+            {
+
+                //velocity.y = -2f;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                jumpSound.Play();
+                Debug.Log(velocity.y);
+            }
+            if (isGravityFlipped && isGrounded)
+            {
+                //velocity.y = 2f;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * -gravity)*-1;
+                jumpSound.Play();
+                Debug.Log(velocity.y);
+            }
         }
 
         //gravity
@@ -49,19 +105,59 @@ public class Player : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         //walk
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        if (direction.magnitude >= 0.1f)
+        if (!isGravityFlipped)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, Mathf.Lerp(currentRotation.z, 0, Time.deltaTime * 10f));
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+                // Calculate the movement direction based on the target angle
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+                // Keep the original Y rotation and only update the position
+                Quaternion newRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+                transform.rotation = newRotation;
+
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
         }
+        else if (isGravityFlipped)
+        {
+            transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, Mathf.Lerp(currentRotation.z, 180f, Time.deltaTime * 10f));
+            float horizontal = -Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+                // Calculate the movement direction based on the target angle
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+                // Keep the original Y rotation and only update the position
+                Quaternion newRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+                transform.rotation = newRotation;
+
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
+        }
+        
+        void UpdatePlayerCamFollowTarget()
+        {
+            // Update the playerCam follow target to follow the player's transform
+            //playerCam.Follow = transform;
+            playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
+            //playerCam.m_Orbits[0].m_Height = -playerCam.m_Orbits[0].m_Height;
+            //playerCam.m_Orbits[1].m_Height = -playerCam.m_Orbits[1].m_Height;
+            //playerCam.m_Orbits[2].m_Height = -playerCam.m_Orbits[2].m_Height;
+        }
+
 
         if (isDead)
         {
