@@ -29,16 +29,9 @@ public class Player : MonoBehaviour
     float jumpPECooldown;
 
     public float turnSmoothTime = 0.1f;
-
-
-
-
-
     void Update()
     {
         // Gravity flip
-        //Change hardcoded gravity change while on roof
-        //make sure you check isGrounded from the roof also
         if (Input.GetKeyDown(KeyCode.H) && isGrounded)
         {
             isGravityFlipped = !isGravityFlipped;
@@ -46,18 +39,9 @@ public class Player : MonoBehaviour
             // Change gravity direction
             gravity = isGravityFlipped ? 9.81f : -9.81f;
 
-            //velocity.y = 0f;
-
-            
             //transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, currentRotation.z + 180f);
-
             //playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
             UpdatePlayerCamFollowTarget();
-
-
-            
-
-
         }
 
         //jump
@@ -84,7 +68,6 @@ public class Player : MonoBehaviour
         {
             if (!isGravityFlipped && isGrounded)
             {
-
                 //velocity.y = -2f;
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpSound.Play();
@@ -149,8 +132,6 @@ public class Player : MonoBehaviour
         
         void UpdatePlayerCamFollowTarget()
         {
-            // Update the playerCam follow target to follow the player's transform
-            //playerCam.Follow = transform;
             playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
             //playerCam.m_Orbits[0].m_Height = -playerCam.m_Orbits[0].m_Height;
             //playerCam.m_Orbits[1].m_Height = -playerCam.m_Orbits[1].m_Height;
