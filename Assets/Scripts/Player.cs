@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
 
 
 
+
+
     void Update()
     {
         jumpSound.volume = Options.masterVolume;
@@ -164,4 +166,5 @@ public class Player : MonoBehaviour
             playerCam.Follow = null;
         }
     }
+   
 }
