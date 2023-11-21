@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -14,13 +13,10 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public CinemachineFreeLook playerCam;
-    public TextMeshProUGUI floatValue;
-    public ParticleSystem floatPE;
-    public AudioSource floatAudio;
 
 
     public float speed;
-    public float gravity;
+    public float gravity = -9.81f;
     public float jumpHeight = 3;
     Vector3 velocity;
     bool isGrounded;
@@ -30,21 +26,17 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
-    float floatTimer;
-    float floatCap = 1.5f;
-    float floatVolume;
+    float jumpPECooldown;
 
     public float turnSmoothTime = 0.1f;
 
-    private void Start()
-    {
-        floatTimer = floatCap;
-    }
+
+
+
 
     void Update()
     {
         jumpSound.volume = Options.masterVolume;
-        floatAudio.volume = floatVolume;
         // Gravity flip
         //Change hardcoded gravity change while on roof
         //make sure you check isGrounded from the roof also
@@ -111,64 +103,6 @@ public class Player : MonoBehaviour
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.01f && !isGrounded)
-        {
-            if (!isGravityFlipped)
-            {
-                gravity = -2f;
-            }
-            else
-            {
-                gravity = 2f;
-            }
-
-            floatTimer -= Time.deltaTime;
-
-            if (floatPE.isStopped)
-            {
-                floatPE.Play();
-            }
-        }
-        else
-        {
-            if (!isGravityFlipped)
-            {
-                gravity = -9.81f;
-            }
-            else
-            {
-                gravity = 9.81f;
-            }
-
-            floatTimer += Time.deltaTime * 0.5f;
-
-            if (floatPE.isPlaying)
-            {
-                floatPE.Stop();
-            }
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded)
-        {
-            floatVolume = Mathf.SmoothStep(floatVolume, Options.masterVolume, Time.deltaTime * 10f);
-        }
-        else
-        {
-            floatVolume = Mathf.SmoothStep(floatVolume, 0, Time.deltaTime * 20f);
-        }
-
-        if (floatTimer < 0)
-        {
-            floatTimer = 0;
-        }
-        else if (floatTimer > floatCap)
-        {
-            floatTimer = floatCap;
-        }
-
-        //fpsText.text = (Mathf.Round(avgFrameRate * 10.0f) * 0.1f).ToString() + " FPS";
-        floatValue.text = (Mathf.Round(floatTimer * 10.0f) * 0.1f).ToString();
 
         //walk
         if (!isGravityFlipped)
