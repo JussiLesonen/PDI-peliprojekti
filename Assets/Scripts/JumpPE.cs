@@ -31,7 +31,7 @@ public class JumpPE : MonoBehaviour
             jumpPE.Play();
             Debug.Log(jumpPECooldown);
 
-            gameObject.GetComponent<AudioSource>().pitch = Random.RandomRange(4, 6);
+            gameObject.GetComponent<AudioSource>().pitch = Random.RandomRange(7, 9);
             gameObject.GetComponent<AudioSource>().PlayOneShot(thud);
         }
     }
