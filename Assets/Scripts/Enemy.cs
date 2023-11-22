@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 5.0f;
     public GameObject bullet;
     public Transform spawnPoint;
-    public float shootCooldown = 0.5f;
+    public float shootCooldown = 2.0f;
     public float bulletSpeed = 10.0f;
     public LayerMask playerLayer;
     [SerializeField]private float timer = 5;
@@ -90,20 +90,24 @@ public class Enemy : MonoBehaviour
     }
 
     void Shoot()
-{
-    bulletTime -= Time.deltaTime;
-
-    if (bulletTime <= 0)
     {
-        bulletTime = timer;
+        bulletTime -= Time.deltaTime;
 
-        GameObject bulletObj = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation) as GameObject;
-        Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
-        Vector3 shootDirection = (player.position - spawnPoint.position).normalized;
-        bulletRig.AddForce(shootDirection * bulletSpeed);
+        if (bulletTime <= 0)
+        {
+            bulletTime = timer;
 
-        Destroy(bulletObj, 1.0f);
+            // Check if the player is close before shooting
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer <= detectionRange)
+            {
+                GameObject bulletObj = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation) as GameObject;
+                Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
+                Vector3 shootDirection = (player.position - spawnPoint.position).normalized;
+                bulletRig.AddForce(shootDirection * bulletSpeed);
+
+                Destroy(bulletObj, 1.0f);
+            }
+        }
     }
-}
-
 }
