@@ -403,7 +403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141192672}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31979296, y: -1e-45, z: 1e-45, w: 0.9474875}
+  m_LocalRotation: {x: 0.31979296, y: 3e-45, z: -1e-45, w: 0.9474875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7278,7 +7278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31979296, y: 0, z: 0, w: 0.9474875}
+  m_LocalRotation: {x: 0.31979296, y: 4e-45, z: -1e-45, w: 0.9474875}
   m_LocalPosition: {x: 0, y: 11.3, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8365,7 +8365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346828514}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30250573, y: 1e-45, z: -0, w: 0.9531476}
+  m_LocalRotation: {x: 0.30250573, y: -3e-45, z: 1e-45, w: 0.9531476}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10228,17 +10228,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 2.5
   detectionRange: 5
   bullet: {fileID: 1704100955}
   spawnPoint: {fileID: 1906022019}
-  shootCooldown: 2
-  bulletSpeed: 10
+  shootCooldown: 1
+  bulletSpeed: 1000
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
-  timer: 5
-  patrolRange: 3
+  timer: 1
+  patrolRange: 5
   ShootingSound: {fileID: 2062567624}
 --- !u!136 &2062567620
 CapsuleCollider:
@@ -10337,7 +10337,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062567618}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bcac18d0d26978f44a84771634e49605, type: 3}
@@ -10831,7 +10831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7020310498863316701, guid: e0bb3144ea6cfa248a448374c34ab2a1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7873390461331752214, guid: e0bb3144ea6cfa248a448374c34ab2a1, type: 3}
       propertyPath: m_LocalPosition.x
