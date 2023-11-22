@@ -55,7 +55,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGameButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level");
     }
 
     public void QuitGameButton()

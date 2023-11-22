@@ -13,7 +13,7 @@ public class ItemCollector : MonoBehaviour
         Debug.Log(hasKey);
     }
 
-    bool hasKey=false;
+    public static bool hasKey=false;
 
     [SerializeField] AudioSource coinSound;
 
@@ -47,6 +47,9 @@ public class ItemCollector : MonoBehaviour
         }
         if (other.gameObject.tag=="Key")
         {
+            Instantiate(Resources.Load("KeyCollect"), transform);
+            coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
+            coinSound.Play();
             Destroy(other.gameObject);
             hasKey = true;
             Debug.Log(other.gameObject.tag);
