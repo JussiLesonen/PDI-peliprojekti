@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 5.0f;
     public GameObject bullet;
     public Transform spawnPoint;
-    public float shootCooldown = 2.0f;
+    public float shootCooldown = 0.5f;
     public float bulletSpeed = 10.0f;
     public LayerMask playerLayer;
     [SerializeField]private float timer = 5;
@@ -51,6 +51,8 @@ public class Enemy : MonoBehaviour
             // Player is not detected, switch back to patrol state
             Patrol();
         }
+
+        Shoot();
     }
 
     void FollowPlayer()
@@ -88,17 +90,20 @@ public class Enemy : MonoBehaviour
     }
 
     void Shoot()
+{
+    bulletTime -= Time.deltaTime;
+
+    if (bulletTime <= 0)
     {
-       
-       bulletTime -= Time.deltaTime;
+        bulletTime = timer;
 
-       if (bulletTime > 0) return;
+        GameObject bulletObj = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation) as GameObject;
+        Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
+        Vector3 shootDirection = (player.position - spawnPoint.position).normalized;
+        bulletRig.AddForce(shootDirection * bulletSpeed);
 
-       bulletTime = timer;
-
-       GameObject bulletObj = Instantiate(bullet, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-       Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
-       bulletRig.AddForce(bulletRig.transform.forward * moveSpeed);
-       Destroy(bulletObj, 0.1f);
+        Destroy(bulletObj, 1.0f);
     }
+}
+
 }
