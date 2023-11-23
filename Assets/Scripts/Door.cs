@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public int targetCoins;
-
     public Material material;
 
     float alpha = 1;
