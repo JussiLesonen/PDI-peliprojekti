@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
         floatTimer = floatCap;
     }
 
+
+
     void Update()
     {
         jumpSound.volume = Options.masterVolume;
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
                 //velocity.y = -2f;
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpSound.Play();
-                Debug.Log(velocity.y);
+                //Debug.Log(velocity.y);
             }
             if (isGravityFlipped && isGrounded)
             {
