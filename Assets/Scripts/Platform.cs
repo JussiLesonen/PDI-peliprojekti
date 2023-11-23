@@ -8,7 +8,5 @@ public class Platform : MonoBehaviour
     void Start()
     {
         GetComponent<Renderer>().material.color = Color.HSVToRGB(0.3f, 0.9f, Random.RandomRange(0.4f, 1));
-
-        Debug.Log(GetComponent<Renderer>().material.color);
     }
 }

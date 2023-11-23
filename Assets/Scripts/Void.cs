@@ -52,6 +52,7 @@ public class Void : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     public void ResetGame()
     {
         Application.LoadLevel(Application.loadedLevel);
