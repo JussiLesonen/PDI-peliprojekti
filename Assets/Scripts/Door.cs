@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (ItemCollector.hasKey)
+        if (ItemCollector.hasKey && Objectives.timeValue > 0)
         {
             GetComponent<BoxCollider>().enabled = false;
             alpha = Mathf.SmoothStep(alpha, 0.3f, Time.deltaTime * 10f);
