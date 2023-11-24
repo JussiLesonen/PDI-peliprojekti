@@ -11,7 +11,6 @@ public class Stickyplatform : MonoBehaviour
             GameObject.Find("Player").transform.SetParent(transform);
             
         }
-        Debug.Log(collision.gameObject.name);
     }
 
     private void OnTriggerEXit(Collider collision)
@@ -20,7 +19,5 @@ public class Stickyplatform : MonoBehaviour
         {
             GameObject.Find("Player").transform.SetParent(null);
         }
-
     }
-
 }

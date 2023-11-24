@@ -10,7 +10,7 @@ public class ItemCollector : MonoBehaviour
     {
         coins = 0;
         hasKey= false;
-        Debug.Log(hasKey);
+        //Debug.Log(hasKey);
     }
 
     public static bool hasKey=false;
@@ -52,8 +52,8 @@ public class ItemCollector : MonoBehaviour
             coinSound.Play();
             Destroy(other.gameObject);
             hasKey = true;
-            Debug.Log(other.gameObject.tag);
-            Debug.Log(hasKey);
+            //Debug.Log(other.gameObject.tag);
+            //Debug.Log(hasKey);
         }
             
         if (other.gameObject.CompareTag("Door")&& hasKey)

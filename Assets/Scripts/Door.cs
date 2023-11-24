@@ -25,9 +25,17 @@ public class Door : MonoBehaviour
         else
         {
             GetComponent<BoxCollider>().enabled = true;
-            alpha = Mathf.SmoothStep(alpha, 1, Time.deltaTime * 10f);
+            alpha = Mathf.SmoothStep(alpha, 1, Time.deltaTime * 20f);
 
             material.color = new Color(1, 1, 1, alpha);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            ItemCollector.hasKey = false;
         }
     }
 }

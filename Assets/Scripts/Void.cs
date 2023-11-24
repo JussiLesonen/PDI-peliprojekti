@@ -32,16 +32,12 @@ public class Void : MonoBehaviour
             endMenu.SetActive(true);
 
             Cursor.lockState = CursorLockMode.None;
-
-            Debug.Log("Paused");
         }
 
         if (timer < 0)
         {
             timer = 0;
         }
-
-        //Debug.Log(timer);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,12 +48,15 @@ public class Void : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
     public void ResetGame()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Player.isDead = false;
+
+        ItemCollector.coins = 0;
+
+        Objectives.canSpawn = true;
 
         Time.timeScale = 1;
     }
@@ -67,6 +66,10 @@ public class Void : MonoBehaviour
         SceneManager.LoadScene("Menu");
 
         Player.isDead = false;
+
+        ItemCollector.coins = 0;
+
+        Objectives.canSpawn = true;
 
         Time.timeScale = 1;
     }
