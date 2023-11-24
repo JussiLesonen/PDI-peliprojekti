@@ -6,27 +6,18 @@ using TMPro;
 public class Objectives : MonoBehaviour
 {
     public TextMeshProUGUI objectiveText;
-    bool canSpawn = true;
+    public static bool canSpawn = true;
     public static float timeValue = 0;
     bool timeStarted = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (timeValue <= 0)
         {
             timeValue = 0;
         }
-        timeValue -= Time.deltaTime;
 
-        
+        timeValue -= Time.deltaTime;
 
         if (ItemCollector.coins == 2 && canSpawn)
         {
@@ -44,8 +35,5 @@ public class Objectives : MonoBehaviour
             }
             objectiveText.text = ("Time: " + Mathf.Round(timeValue).ToString());
         }
-       
     }
-
-   
 }

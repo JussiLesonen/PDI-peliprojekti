@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
 
     public static bool isPaused = false;
 
+    public static int totalCoins;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt("Mute") == 1)
@@ -89,5 +91,9 @@ public class EventManager : MonoBehaviour
         isPaused = false;
 
         SceneManager.LoadScene("Menu");
+
+        ItemCollector.coins = 0;
+
+        Objectives.canSpawn = true;
     }
 }

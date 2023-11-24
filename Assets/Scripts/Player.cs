@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
         floatTimer = floatCap;
     }
 
-
-
     void Update()
     {
         jumpSound.volume = Options.masterVolume;
