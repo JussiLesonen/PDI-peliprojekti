@@ -27,11 +27,7 @@ public class Player : MonoBehaviour
 
     float turnSmoothVelocity;
     float jumpPECooldown;
-
     public float turnSmoothTime = 0.1f;
-
-
-
 
 
     void Update()
@@ -157,8 +153,7 @@ public class Player : MonoBehaviour
             //playerCam.m_Orbits[1].m_Height = -playerCam.m_Orbits[1].m_Height;
             //playerCam.m_Orbits[2].m_Height = -playerCam.m_Orbits[2].m_Height;
         }
-
-
+        
         if (isDead)
         {
             playerCam.Follow = null;
