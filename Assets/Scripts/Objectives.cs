@@ -33,7 +33,7 @@ public class Objectives : MonoBehaviour
                 timeValue += 15;
                 timeStarted = true;
             }
-            objectiveText.text = "Go to the next stage before " + Mathf.Round(timeValue).ToString() + "s";
+            objectiveText.text = "Go to the next stage within " + Mathf.Round(timeValue).ToString() + "s";
         }
     }
 }

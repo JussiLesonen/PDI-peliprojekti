@@ -43,7 +43,7 @@ public class ItemCollector : MonoBehaviour
 
             coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
             coinSound.Play();
-            Debug.Log(hasKey);
+            //Debug.Log(hasKey);
         }
         if (other.gameObject.tag=="Key")
         {
