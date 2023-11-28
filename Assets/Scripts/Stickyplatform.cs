@@ -11,8 +11,6 @@ public class Stickyplatform : MonoBehaviour
         if (onPlatform)
         {
             GameObject.Find("Player").transform.SetParent(transform);
-
-            //Debug.Log(Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) + " | " + transform.localScale.x / 2);
         }
 
         if (Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) > transform.localScale.x / 2 && transform.Find("Player"))
