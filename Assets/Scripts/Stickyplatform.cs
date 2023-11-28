@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Stickyplatform : MonoBehaviour
 {
-    bool onPlatform;
+    public bool onPlatform = false;
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) > transform.localScale.x)
+        if (onPlatform)
+        {
+            GameObject.Find("Player").transform.SetParent(transform);
+
+            //Debug.Log(Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) + " | " + transform.localScale.x / 2);
+        }
+
+        if (Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) > transform.localScale.x / 2 && transform.Find("Player"))
         {
             GameObject.Find("Player").transform.SetParent(null);
 
-            Debug.Log("Player left the platform");
-
             onPlatform = false;
-        }
-
-        if (onPlatform)
-        {
-            Debug.Log("Distance: " + Vector3.Distance(transform.position, GameObject.Find("GroundCheck").transform.position) + " / " + transform.localScale.x);
         }
     }
 
@@ -27,12 +27,7 @@ public class Stickyplatform : MonoBehaviour
     {
         if (collision.gameObject.name == "GroundCheck")
         {
-            GameObject.Find("Player").transform.SetParent(transform);
-
             onPlatform = true;
-
-            //Debug.Log(Vector3.Distance(transform.position, GameObject.Find("Player").transform.localPosition) + " / " + transform.localScale.x);
-            //Debug.Log(transform.position);
         }
     }
 }
