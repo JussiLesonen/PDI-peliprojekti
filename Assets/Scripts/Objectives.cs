@@ -37,7 +37,7 @@ public class Objectives : MonoBehaviour
                 Instantiate(Resources.Load("Key"), transform.position,
                 Quaternion.Euler(Vector3.zero));
             }
-            objectiveText.text = "Go to the next stage before " + Mathf.Round(timeValue).ToString() + "s";
+            objectiveText.text = "Go to the next stage within " + Mathf.Round(timeValue).ToString() + "s";
         }
         if (timeStarted && timeValue < 0.1f)
         {
