@@ -10,7 +10,6 @@ public class ItemCollector : MonoBehaviour
     {
         coins = 0;
         hasKey= false;
-        //Debug.Log(hasKey);
     }
 
     public static bool hasKey=false;
@@ -24,8 +23,6 @@ public class ItemCollector : MonoBehaviour
     private void Update()
     {
         coinSound.volume = Options.masterVolume;
-
-        //Debug.Log(Options.masterVolume);
     }
 
     [System.Obsolete]
@@ -38,12 +35,10 @@ public class ItemCollector : MonoBehaviour
 
             Destroy(other.gameObject);
             coins++;
-            //Debug.Log("Coins: " + coins);
             coinsText.text = "Coins: " + coins;
 
             coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
             coinSound.Play();
-            Debug.Log(hasKey);
         }
         if (other.gameObject.tag=="Key")
         {
@@ -52,8 +47,6 @@ public class ItemCollector : MonoBehaviour
             coinSound.Play();
             Destroy(other.gameObject);
             hasKey = true;
-            //Debug.Log(other.gameObject.tag);
-            //Debug.Log(hasKey);
         }
             
         if (other.gameObject.CompareTag("Door")&& hasKey)

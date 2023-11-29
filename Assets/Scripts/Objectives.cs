@@ -21,19 +21,28 @@ public class Objectives : MonoBehaviour
 
         if (ItemCollector.coins == 2 && canSpawn)
         {
-            Instantiate(Resources.Load("Key"), transform.position, 
+            Instantiate(Resources.Load("Key"), transform.position,
             Quaternion.Euler(Vector3.zero));
             canSpawn = false;
-            objectiveText.text="Objective: Collect the key";
+            objectiveText.text = "Objective: Collect the key";
         }
         if (ItemCollector.hasKey)
         {
             if (!timeStarted)
             {
-                timeValue += 15;
                 timeStarted = true;
+            }
+            if (timeValue < 0.1f && GameObject.Find("Key(Clone)")==null)
+            {
+                Instantiate(Resources.Load("Key"), transform.position,
+                Quaternion.Euler(Vector3.zero));
             }
             objectiveText.text = "Go to the next stage before " + Mathf.Round(timeValue).ToString() + "s";
         }
+        if (timeStarted && timeValue < 0.1f)
+        {
+            objectiveText.text = "Objective: Collect the key";
+        }
+        
     }
 }

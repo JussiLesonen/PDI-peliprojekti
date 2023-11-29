@@ -9765,6 +9765,7 @@ GameObject:
   - component: {fileID: 5690934159235093267}
   - component: {fileID: 3784352257418258233}
   - component: {fileID: 5743184416341434410}
+  - component: {fileID: 256594595712617281}
   m_Layer: 0
   m_Name: Key
   m_TagString: Key
@@ -9878,3 +9879,15 @@ MonoBehaviour:
   speedX: 0.3
   speedY: 0.2
   speedZ: 0.2
+--- !u!114 &256594595712617281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094869418222458912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66340c5e9df27748becf1922d778987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

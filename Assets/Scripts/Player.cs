@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpSound.Play();
                 //Debug.Log(velocity.y);
+               
             }
             if (isGravityFlipped && isGrounded)
             {
