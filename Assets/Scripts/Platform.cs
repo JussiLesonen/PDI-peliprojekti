@@ -9,16 +9,35 @@ public class Platform : MonoBehaviour
     [System.Obsolete]
     void Start()
     {
+        var green = Color.HSVToRGB(0.3f, 0.9f, Random.RandomRange(0.4f, 1));
+        var blue = Color.HSVToRGB(0.6f, 0.9f, Random.RandomRange(0.4f, 1));
+        var red = Color.HSVToRGB(1f, 0.9f, Random.RandomRange(0.4f, 1));
+        var yellow = Color.HSVToRGB(0.2f, 0.9f, Random.RandomRange(0.4f, 1));
+
         #region Static platform colors
         if (transform.parent.name == "Level 1")
         {
-            GetComponent<Renderer>().material.color = Color.HSVToRGB(0.3f, 0.9f, Random.RandomRange(0.4f, 1));
+            GetComponent<Renderer>().material.color = green;
+
+            particleEffect.GetComponent<ParticleSystem>().startColor = green;
         }
         else if (transform.parent.name == "Level 2")
         {
-            GetComponent<Renderer>().material.color = Color.HSVToRGB(0.6f, 0.9f, Random.RandomRange(0.4f, 1));
+            GetComponent<Renderer>().material.color = blue;
 
-            //particleEffect.GetComponent<ParticleSystem>().startColor = new Color();
+            particleEffect.GetComponent<ParticleSystem>().startColor = blue;
+        }
+        else if (transform.parent.name == "Level 3")
+        {
+            GetComponent<Renderer>().material.color = yellow;
+
+            particleEffect.GetComponent<ParticleSystem>().startColor = yellow;
+        }
+        else if (transform.parent.name == "Level 4")
+        {
+            GetComponent<Renderer>().material.color = red;
+
+            particleEffect.GetComponent<ParticleSystem>().startColor = red;
         }
         #endregion
 
@@ -27,13 +46,27 @@ public class Platform : MonoBehaviour
         {
             if (transform.parent.transform.parent.name == "Level 1")
             {
-                GetComponent<Renderer>().material.color = Color.HSVToRGB(0.3f, 0.9f, Random.RandomRange(0.4f, 1));
+                GetComponent<Renderer>().material.color = green;
+
+                particleEffect.GetComponent<ParticleSystem>().startColor = green;
             }
             else if (transform.parent.transform.parent.name == "Level 2")
             {
-                GetComponent<Renderer>().material.color = Color.HSVToRGB(0.6f, 0.9f, Random.RandomRange(0.4f, 1));
+                GetComponent<Renderer>().material.color = blue;
 
-                particleEffect.GetComponent<ParticleSystem>().startColor = Color.blue;
+                particleEffect.GetComponent<ParticleSystem>().startColor = blue;
+            }
+            else if (transform.parent.transform.parent.name == "Level 3")
+            {
+                GetComponent<Renderer>().material.color = yellow;
+
+                particleEffect.GetComponent<ParticleSystem>().startColor = yellow;
+            }
+            else if (transform.parent.transform.parent.name == "Level 4")
+            {
+                GetComponent<Renderer>().material.color = red;
+
+                particleEffect.GetComponent<ParticleSystem>().startColor = red;
             }
         }
         #endregion
