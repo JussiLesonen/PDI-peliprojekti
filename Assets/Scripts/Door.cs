@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -37,6 +38,8 @@ public class Door : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             ItemCollector.hasKey = false;
+            Objectives.level = 2;
+            GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text="Objectives: Collect 5 coins";
         }
     }
 }
