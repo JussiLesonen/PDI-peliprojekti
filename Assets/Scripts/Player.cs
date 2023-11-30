@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public float turnSmoothTime = 0.1f;
 
     public static bool canUseHover = false;
+    public static bool canUseAntiGrav = false;
 
     private void Start()
     {
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
         // Gravity flip
         //Change hardcoded gravity change while on roof
         //make sure you check isGrounded from the roof also
-        if (Input.GetKeyDown(KeyCode.H) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Tab) && isGrounded && canUseAntiGrav)
         {
             isGravityFlipped = !isGravityFlipped;
 
