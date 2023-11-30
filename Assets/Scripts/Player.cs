@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
 
     public float turnSmoothTime = 0.1f;
 
+    public static bool canUseHover = false;
+
     private void Start()
     {
         floatTimer = floatCap;
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.01f && !isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.01f && !isGrounded && canUseHover)
         {
             if (!isGravityFlipped)
             {
