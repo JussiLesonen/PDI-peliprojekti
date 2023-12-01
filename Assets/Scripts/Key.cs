@@ -17,6 +17,6 @@ public class Key : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Objectives.timeValue = 15;
+        Objectives.timeValue = 25;
     }
 }
