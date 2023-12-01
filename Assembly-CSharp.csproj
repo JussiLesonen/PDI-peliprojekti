@@ -62,7 +62,9 @@
     <Compile Include="Assets\Scripts\Objectives.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\AntiGravityPowerup.cs" />
     <Compile Include="Assets\Scripts\Stickyplatform.cs" />
+    <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\HoverPowerup.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
