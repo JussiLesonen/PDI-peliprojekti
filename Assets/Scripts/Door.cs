@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
             material.color = new Color(1, 1, 1, alpha);
         }
         else
-        {
+        {  
             GetComponent<BoxCollider>().enabled = true;
             alpha = Mathf.SmoothStep(alpha, 1, Time.deltaTime * 20f);
 
