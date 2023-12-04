@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded && canUseHover)
         {
             floatVolume = Mathf.SmoothStep(floatVolume, Options.masterVolume, Time.deltaTime * 10f);
         }
