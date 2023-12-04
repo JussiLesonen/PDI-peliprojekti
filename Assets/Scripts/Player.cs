@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class Player : MonoBehaviour
     float floatTimer;
     float floatCap = 1.5f;
     float floatVolume;
+
+    
+    public GameObject bluearrow;
+    public GameObject redarrow;
+
+    public Slider angleSlider;
 
     public void Teleport(Vector3 position, Quaternion rotation)
     {
@@ -77,6 +84,8 @@ public class Player : MonoBehaviour
         
         if (!isGravityFlipped)
         {
+            bluearrow.SetActive(true);
+            redarrow.SetActive(false);
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
@@ -84,6 +93,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            bluearrow.SetActive(false);
+            redarrow.SetActive(true);
             if (isGrounded && velocity.y > 0)
             {
                 velocity.y = 2f;

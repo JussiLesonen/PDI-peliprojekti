@@ -35,7 +35,7 @@ public class ItemCollector : MonoBehaviour
 
             Destroy(other.gameObject);
             coins++;
-            coinsText.text = "Coins: " + coins;
+            coinsText.text = coins.ToString();
 
             coinSound.pitch = Random.RandomRange(0.8f, 1.2f);
             coinSound.Play();
