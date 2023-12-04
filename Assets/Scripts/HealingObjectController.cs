@@ -4,20 +4,24 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletController : MonoBehaviour
+public class HealingObjectController : MonoBehaviour
 {
+    public int healingAmount = 5;
+
+    [SerializeField] AudioSource HealingSound;
+
     [System.Obsolete]
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger: " + gameObject.name);
-
         if (other.CompareTag("Player") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player.AddBulletHits(1);
-            Debug.Log("Bullet hits player");
-            
+            if (!Player.isDead)
+            {
+                Player.AddBulletHits(-healingAmount);
+            }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            HealingSound.Play();
         }
     }
 }

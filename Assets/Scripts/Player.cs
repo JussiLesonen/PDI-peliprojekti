@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.VisualScripting;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] Text healthText;
 
+    public static int health = 5;
     public static bool isDead = false;
     private bool isGravityFlipped = false;
 
@@ -32,6 +37,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        healthText.text = "Health: " + health;
         jumpSound.volume = Options.masterVolume;
         // Gravity flip
         //Change hardcoded gravity change while on roof
@@ -157,6 +163,17 @@ public class Player : MonoBehaviour
         if (isDead)
         {
             playerCam.Follow = null;
+        }
+    }
+
+    public static void AddBulletHits(int amount)
+    {
+        health = health - amount;
+
+        if (0 >= health)
+        {
+            isDead = true;
+            Debug.Log("Player died");
         }
     }
 }

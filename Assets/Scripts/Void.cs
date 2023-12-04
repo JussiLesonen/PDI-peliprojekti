@@ -33,7 +33,7 @@ public class Void : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None;
 
-            Debug.Log("Paused");
+            //Debug.Log("Paused");
         }
 
         if (timer < 0)
@@ -57,6 +57,7 @@ public class Void : MonoBehaviour
         Application.LoadLevel(Application.loadedLevel);
 
         Player.isDead = false;
+        Player.health = 5;
 
         Time.timeScale = 1;
     }
