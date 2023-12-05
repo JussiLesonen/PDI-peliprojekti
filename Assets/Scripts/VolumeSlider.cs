@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Slider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class VolumeSlider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject checkmark;
 

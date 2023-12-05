@@ -66,13 +66,13 @@
     <Compile Include="Assets\Scripts\Stickyplatform.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\HoverPowerup.cs" />
+    <Compile Include="Assets\Scripts\HoverBar.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\JumpPE.cs" />
     <Compile Include="Assets\Scripts\Void.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
-    <Compile Include="Assets\Scripts\Slider.cs" />
     <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Options.cs" />
@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\ItemCollector.cs" />
+    <Compile Include="Assets\Scripts\VolumeSlider.cs" />
     <Compile Include="Assets\Scripts\ColorButton.cs" />
   </ItemGroup>
   <ItemGroup>

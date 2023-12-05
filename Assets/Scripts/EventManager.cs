@@ -22,7 +22,7 @@ public class EventManager : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("Mute") == 0)
         {
-            Options.masterVolume = Slider.volume;
+            Options.masterVolume = VolumeSlider.volume;
         }
     }
 

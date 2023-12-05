@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
-    float floatTimer;
+    public static float floatTimer;
     float floatCap = 1.5f;
     float floatVolume;
 
@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
         transform.rotation = rotation;
         Physics.SyncTransforms();
         Debug.Log("teepee");
-        
     }
 
     public float turnSmoothTime = 0.1f;
@@ -177,8 +176,6 @@ public class Player : MonoBehaviour
         {
             floatTimer = floatCap;
         }
-
-        floatValue.text = (Mathf.Round(floatTimer * 10.0f) * 0.1f).ToString();
 
         //walk
         if (!isGravityFlipped)
