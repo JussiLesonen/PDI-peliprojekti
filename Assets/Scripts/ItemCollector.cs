@@ -10,6 +10,7 @@ public class ItemCollector : MonoBehaviour
     {
         coins = 0;
         hasKey= false;
+        coinsText = GameObject.Find("Coins Text").GetComponent<Text>();
     }
 
     public static bool hasKey=false;
@@ -18,8 +19,8 @@ public class ItemCollector : MonoBehaviour
 
     public static int coins = 0;
 
-    [SerializeField] Text coinsText;
-
+    [SerializeField] public static Text coinsText;
+    
     private void Update()
     {
         coinSound.volume = Options.masterVolume;
