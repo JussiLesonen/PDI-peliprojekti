@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ColorButton : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class ColorButton : MonoBehaviour
 
     public int requiredCoins;
 
+    public GameObject Lock;
+
+    bool isLocked = true;
+
+    TextMeshProUGUI requiredAmount;
+
     void Start()
     {
         ID = GetInstanceID();
@@ -18,31 +25,51 @@ public class ColorButton : MonoBehaviour
         {
             transform.Find("Checkmark").gameObject.SetActive(true);
         }
+
+        requiredAmount = transform.Find("Lock").transform.Find("RequiredCoinsText").GetComponent<TextMeshProUGUI>();
+        requiredAmount.text = requiredCoins.ToString();
     }
 
     private void Update()
     {
-        if (defaultColorChanged == true)
+        if (Customization.totalCoins >= requiredCoins)
         {
-            if (EventManager.color == name)
+            isLocked = false;
+        }
+
+        if (!isLocked)
+        {
+            Lock.SetActive(false);
+
+            if (defaultColorChanged == true)
             {
-                transform.Find("Checkmark").gameObject.SetActive(true);
+                if (EventManager.color == name)
+                {
+                    transform.Find("Checkmark").gameObject.SetActive(true);
+                }
+                else
+                {
+                    transform.Find("Checkmark").gameObject.SetActive(false);
+                }
             }
-            else
-            {
-                transform.Find("Checkmark").gameObject.SetActive(false);
-            }
+        }
+        else
+        {
+            Lock.SetActive(true);
         }
     }
 
     public void SetColor()
     {
-        Customization.currentID = ID;
+        if (!isLocked)
+        {
+            Customization.currentID = ID;
 
-        defaultColorChanged = true;
+            defaultColorChanged = true;
 
-        Debug.Log("Changed player color to " + name);
+            Debug.Log("Changed player color to " + name);
 
-        EventManager.color = name;
+            EventManager.color = name;
+        }
     }
 }
