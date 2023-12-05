@@ -8,6 +8,8 @@ public class ColorButton : MonoBehaviour
 
     public static bool defaultColorChanged = false;
 
+    public int requiredCoins;
+
     void Start()
     {
         ID = GetInstanceID();

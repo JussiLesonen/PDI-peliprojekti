@@ -34,6 +34,9 @@ public class HoverPowerup : MonoBehaviour
     {
         Player.canUseHover = true;
 
-        GameObject.Find("HoverBar").transform.Find("Fill").gameObject.SetActive(true);
+        if (GameObject.Find("HoverBar") != null)
+        {
+            GameObject.Find("HoverBar").transform.Find("Fill").gameObject.SetActive(true);
+        }
     }
 }

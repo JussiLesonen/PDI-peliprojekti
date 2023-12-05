@@ -23,6 +23,11 @@ public class ItemCollector : MonoBehaviour
     private void Update()
     {
         coinSound.volume = Options.masterVolume;
+
+        if (coins > Customization.totalCoins)
+        {
+            Customization.totalCoins = coins;
+        }
     }
 
     [System.Obsolete]

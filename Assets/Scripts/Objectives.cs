@@ -50,6 +50,5 @@ public class Objectives : MonoBehaviour
         {
             objectiveText.text = "Objective: Collect the key";
         }
-
     }
 }
