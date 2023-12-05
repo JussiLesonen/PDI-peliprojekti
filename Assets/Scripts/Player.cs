@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -29,9 +30,15 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
-    float floatTimer;
+    public static float floatTimer;
     float floatCap = 1.5f;
     float floatVolume;
+
+    
+    public GameObject bluearrow;
+    public GameObject redarrow;
+
+    public Slider angleSlider;
 
     public void Teleport(Vector3 position, Quaternion rotation)
     {
@@ -39,7 +46,6 @@ public class Player : MonoBehaviour
         transform.rotation = rotation;
         Physics.SyncTransforms();
         Debug.Log("teepee");
-        
     }
 
     public float turnSmoothTime = 0.1f;
@@ -77,6 +83,8 @@ public class Player : MonoBehaviour
         
         if (!isGravityFlipped)
         {
+            bluearrow.SetActive(true);
+            redarrow.SetActive(false);
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
@@ -84,6 +92,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            bluearrow.SetActive(false);
+            redarrow.SetActive(true);
             if (isGrounded && velocity.y > 0)
             {
                 velocity.y = 2f;
@@ -149,7 +159,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded && canUseHover)
         {
             floatVolume = Mathf.SmoothStep(floatVolume, Options.masterVolume, Time.deltaTime * 10f);
         }
@@ -166,8 +176,6 @@ public class Player : MonoBehaviour
         {
             floatTimer = floatCap;
         }
-
-        floatValue.text = (Mathf.Round(floatTimer * 10.0f) * 0.1f).ToString();
 
         //walk
         if (!isGravityFlipped)

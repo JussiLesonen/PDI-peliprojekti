@@ -26,12 +26,14 @@ public class HoverPowerup : MonoBehaviour
 
     IEnumerator DestroyGameobject()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
 
     private void OnDestroy()
     {
         Player.canUseHover = true;
+
+        GameObject.Find("HoverBar").transform.Find("Fill").gameObject.SetActive(true);
     }
 }
