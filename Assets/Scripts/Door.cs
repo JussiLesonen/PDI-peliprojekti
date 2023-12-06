@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class Door : MonoBehaviour
 {

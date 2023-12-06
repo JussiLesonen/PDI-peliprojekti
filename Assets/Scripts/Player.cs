@@ -56,6 +56,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         floatTimer = floatCap;
+
+        canUseHover = false;
+        canUseAntiGrav = false;
     }
 
     void Update()
