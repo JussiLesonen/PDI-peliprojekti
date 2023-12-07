@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
 
     public Slider angleSlider;
 
-
     public void Teleport(Vector3 position, Quaternion rotation)
     {
         transform.position = position;
