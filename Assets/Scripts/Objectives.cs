@@ -32,7 +32,7 @@ public class Objectives : MonoBehaviour
             canSpawn = false;
             objectiveText.text = "Collect the key";
             //debug
-            Instantiate(Resources.Load("Key"), new Vector3(52.0600014f, 10.6400003f, 29.1200008f),
+            Instantiate(Resources.Load("Key"), new Vector3(-0.06f, 0.96f, 30.64f),
             Quaternion.Euler(Vector3.zero));
         }
         if (ItemCollector.coins == 5 && level == 2 && canSpawn)
