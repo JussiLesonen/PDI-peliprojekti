@@ -42,8 +42,6 @@ public class Player : MonoBehaviour
 
     public Slider angleSlider;
 
-    Vector3 orgScale;
-
     public void Teleport(Vector3 position, Quaternion rotation)
     {
         transform.position = position;
@@ -63,14 +61,10 @@ public class Player : MonoBehaviour
 
         canUseHover = false;
         canUseAntiGrav = false;
-
-        orgScale = transform.localScale;
     }
 
     void Update()
     {
-        transform.localScale = orgScale;
-
         if (damageCooldown < 0)
         {
             damageCooldown = 0;
