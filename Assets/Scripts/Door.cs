@@ -40,21 +40,22 @@ public class Door : MonoBehaviour
             if (transform.name == "Door1")
             {
                 Objectives.level = 2;
-                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Objectives: Collect 5 coins";
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 5 coins";
             }
             if (transform.name == "Door2")
             {
                 Objectives.level = 3;
-                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Objectives: Collect 6 coins";
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 6 coins";
             }
             if (transform.name == "Door3")
             {
                 Objectives.level = 4;
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 8 coins";
             }
             ItemCollector.hasKey = false;      
             //GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text="Objectives: Collect 5 coins";
             ItemCollector.coins = 0;
-            ItemCollector.coinsText.text = "Coins: " + ItemCollector.coins;
+            ItemCollector.coinsText.text = ItemCollector.coins.ToString();
             Objectives.canSpawn= true;
             Debug.Log(Objectives.canSpawn);
         }
