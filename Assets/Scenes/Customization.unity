@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 466808583}
     - target: {fileID: -1505652877554838511, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: requiredCoins
-      value: 13
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3631173763831377773, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: m_Color.b
@@ -450,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 96672731}
     - target: {fileID: -1505652877554838511, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: requiredCoins
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3631173763831377773, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: m_Color.b
@@ -1427,7 +1427,7 @@ PrefabInstance:
       objectReference: {fileID: 145224295}
     - target: {fileID: -1505652877554838511, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: requiredCoins
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3631173763831377773, guid: 48a18c29d9bf42a48bd6f2c6dccc6d5b, type: 3}
       propertyPath: m_Color.b
