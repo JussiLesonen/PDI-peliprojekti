@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 3.0f;
-    public float detectionRange = 5.0f;
+    public float moveSpeed = 2.5f;
+    public float detectionRange = 10.0f;
     public GameObject bullet;
     public Transform spawnPoint;
-    public float shootCooldown = 2.0f;
-    public float bulletSpeed = 10.0f;
+    public float shootCooldown = 1.0f;
+    public float bulletSpeed = 1000.0f;
     public LayerMask playerLayer;
     [SerializeField]private float timer = 5;
     private float bulletTime;
@@ -57,9 +57,18 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
-        Vector3 direction = player.position - transform.position;
-        direction.Normalize();
+    Vector3 direction = player.position - transform.position;
+    direction.Normalize();
+
+    float stoppingDistance = 3f;
+
+    float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+    if (distanceToPlayer > stoppingDistance)
+    {
         transform.Translate(direction * moveSpeed * Time.deltaTime);
+    }
+
     }
 
     void Patrol()
