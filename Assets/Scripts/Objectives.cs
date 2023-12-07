@@ -16,7 +16,7 @@ public class Objectives : MonoBehaviour
         canSpawn = true;
         level= 1;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (timeValue <= 0)
         {
@@ -79,7 +79,7 @@ public class Objectives : MonoBehaviour
                     Quaternion.Euler(Vector3.zero));
                 }
             }
-            objectiveText.text = "Objective: Go to the next stage within " + Mathf.Round(timeValue).ToString() + "s";
+            objectiveText.text = "Objective: Go to the next stage within " + Mathf.Round(timeValue).ToString();
         }
         if (timeStarted && timeValue < 0.1f && !canSpawn)
         {
