@@ -29,6 +29,10 @@ public class Key : MonoBehaviour
         {
             Objectives.timeValue = 40;
         }
-        
+        else if (Objectives.level == 4)
+        {
+            Objectives.timeValue = 40;
+        }
+
     }
 }
