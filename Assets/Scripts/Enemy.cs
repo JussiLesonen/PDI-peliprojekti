@@ -41,9 +41,11 @@ public class Enemy : MonoBehaviour
             // Shoot at the player
             if (Time.time - lastShootTime > shootCooldown)
             {
+                ShootingSound.volume = Options.masterVolume;
+                ShootingSound.Play();
+
                 Shoot();
                 lastShootTime = Time.time;
-                ShootingSound.Play();
             }
         }
         else
