@@ -32,11 +32,12 @@ public class Player : MonoBehaviour
 
     float turnSmoothVelocity;
     float jumpPECooldown;
+    public ParticleSystem floatPE;
     public static float floatTimer;
     float floatCap = 1.5f;
     float floatVolume;
 
-    
+
     public GameObject bluearrow;
     public GameObject redarrow;
 
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
             damageCooldown = 0;
         }
 
-        damageCooldown -= Time.delta
+        damageCooldown -= Time.deltaTime;
 
         healthText.text = "Health: " + health;
         jumpSound.volume = Options.masterVolume;
@@ -80,23 +81,18 @@ public class Player : MonoBehaviour
 
             //velocity.y = 0f;
 
-            
+
             //transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, currentRotation.z + 180f);
 
             //playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
             UpdatePlayerCamFollowTarget();
-
-
-            
-
-
         }
 
         //jump
         Vector3 currentRotation = transform.eulerAngles;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        
+
         if (!isGravityFlipped)
         {
             if (isGrounded && velocity.y < 0)
@@ -125,7 +121,7 @@ public class Player : MonoBehaviour
             if (isGravityFlipped && isGrounded)
             {
                 //velocity.y = 2f;
-                velocity.y = Mathf.Sqrt(jumpHeight * -2 * -gravity)*-1;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * -gravity) * -1;
                 jumpSound.Play();
                 Debug.Log(velocity.y);
             }
@@ -233,7 +229,7 @@ public class Player : MonoBehaviour
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
         }
-        
+
         void UpdatePlayerCamFollowTarget()
         {
             // Update the playerCam follow target to follow the player's transform
@@ -243,19 +239,12 @@ public class Player : MonoBehaviour
             //playerCam.m_Orbits[1].m_Height = -playerCam.m_Orbits[1].m_Height;
             //playerCam.m_Orbits[2].m_Height = -playerCam.m_Orbits[2].m_Height;
         }
-        
-        if (isDead)
-        {
-            playerCam.Follow = null;
-        }
-            }
-        }
+
         if (isDead)
         {
             playerCam.Follow = null;
         }
     }
-
     void UpdatePlayerCamFollowTarget()
     {
         // Update the playerCam follow target to follow the player's transform
@@ -267,14 +256,13 @@ public class Player : MonoBehaviour
     }
 
     public static void AddBulletHits(int amount)
-{
-    health = Mathf.Max(0, health - amount);
-
-    if (health <= 0)
     {
-        isDead = true;
-        Debug.Log("Player died");
-    }
-}
+        health = Mathf.Max(0, health - amount);
 
+        if (health <= 0)
+        {
+            isDead = true;
+            Debug.Log("Player died");
+        }
+    }
 }
