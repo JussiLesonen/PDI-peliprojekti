@@ -33,10 +33,18 @@ public class Player : MonoBehaviour
     float turnSmoothVelocity;
     float jumpPECooldown;
     public float turnSmoothTime = 0.1f;
+    public static float damageCooldown;
 
 
     void Update()
     {
+        if (damageCooldown < 0)
+        {
+            damageCooldown = 0;
+        }
+
+        damageCooldown -= Time.deltaTime;
+
         healthText.text = "Health: " + health;
         jumpSound.volume = Options.masterVolume;
         // Gravity flip
@@ -167,13 +175,14 @@ public class Player : MonoBehaviour
     }
 
     public static void AddBulletHits(int amount)
-    {
-        health = health - amount;
+{
+    health = Mathf.Max(0, health - amount);
 
-        if (0 >= health)
-        {
-            isDead = true;
-            Debug.Log("Player died");
-        }
+    if (health <= 0)
+    {
+        isDead = true;
+        Debug.Log("Player died");
     }
+}
+
 }

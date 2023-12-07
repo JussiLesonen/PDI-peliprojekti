@@ -13,10 +13,14 @@ public class BulletController : MonoBehaviour
 
         if (other.CompareTag("Player") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player.AddBulletHits(1);
-            Debug.Log("Bullet hits player");
+            if (Player.damageCooldown <= 0.01f)
+            {
+               Player.AddBulletHits(1);
+               Debug.Log("Bullet hits player");
+            }
             
-
+            
+            Player.damageCooldown = 0.5f;
             Destroy(gameObject);
         }
     }
