@@ -57,6 +57,7 @@ public class Void : MonoBehaviour
         ItemCollector.coins = 0;
 
         Objectives.canSpawn = true;
+        Player.health = 5;
 
         Time.timeScale = 1;
     }

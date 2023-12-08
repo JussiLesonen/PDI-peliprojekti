@@ -13,8 +13,10 @@ public class Objectives : MonoBehaviour
     private void Start()
     {
         objectiveText = GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>();
+        canSpawn = true;
+        level= 1;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (timeValue <= 0)
         {
@@ -23,13 +25,41 @@ public class Objectives : MonoBehaviour
 
         timeValue -= Time.deltaTime;
 
-        if (ItemCollector.coins == 2 && canSpawn)
+        if (ItemCollector.coins == 2 && canSpawn && level == 1)
         {
-            Instantiate(Resources.Load("Key"), transform.position,
+            //Instantiate(Resources.Load("Key"), transform.position,
+            //Quaternion.Euler(Vector3.zero));
+            canSpawn = false;
+            objectiveText.text = "Collect the key";
+            //debug
+            Instantiate(Resources.Load("Key"), new Vector3(-0.06f, 0.96f, 30.64f),
+            Quaternion.Euler(Vector3.zero));
+        }
+        if (ItemCollector.coins == 5 && level == 2 && canSpawn)
+        {
+            Instantiate(Resources.Load("Key"), new Vector3(147.278168f, 20.5699997f, 30.2299995f),
             Quaternion.Euler(Vector3.zero));
             canSpawn = false;
-            objectiveText.text = "Objective: Collect the key";
+            objectiveText.text = "Collect the key";
+            Debug.Log(canSpawn);
         }
+        if (ItemCollector.coins == 6 && level == 3 && canSpawn)
+        {
+            Instantiate(Resources.Load("Key"), new Vector3(137.699997f, 27.1299992f, 214.429993f),
+            Quaternion.Euler(Vector3.zero));
+            canSpawn = false;
+            objectiveText.text = "Collect the key";
+            Debug.Log(canSpawn);
+        }
+        if (ItemCollector.coins == 8 && level == 4 && canSpawn)
+        {
+            Instantiate(Resources.Load("Key"), new Vector3(126.959999f, 107.480003f, 496.119995f),
+            Quaternion.Euler(Vector3.zero));
+            canSpawn = false;
+            objectiveText.text = "Collect the key";
+            Debug.Log(canSpawn);
+        }
+
         if (ItemCollector.hasKey)
         {
             if (!timeStarted)
@@ -38,18 +68,32 @@ public class Objectives : MonoBehaviour
             }
             if (timeValue < 0.1f && GameObject.Find("Key(Clone)") == null)
             {
-                Instantiate(Resources.Load("Key"), new Vector3(-0.06f, 0.96f, 30.64f),
-                Quaternion.Euler(Vector3.zero));
-                Debug.Log(Resources.Load("Key(Clone)"));
-                Debug.Log(timeValue);
-                Debug.Log(transform.position);
+                if (level == 1)
+                {
+                    Instantiate(Resources.Load("Key"), new Vector3(-0.06f, 0.96f, 30.64f),
+                    Quaternion.Euler(Vector3.zero));
+                }
+                else if (level == 2)
+                {
+                    Instantiate(Resources.Load("Key"), new Vector3(147.278168f, 20.5699997f, 30.2299995f),
+                    Quaternion.Euler(Vector3.zero));
+                    Debug.Log(Resources.Load("Key(Clone)"));
+                    Debug.Log(timeValue);
+                    Debug.Log(transform.position);
+                }
+                else if (level == 3)
+                {
+                    Instantiate(Resources.Load("Key"), new Vector3(137.699997f, 27.1299992f, 214.429993f),
+                    Quaternion.Euler(Vector3.zero));
+                }
             }
-            objectiveText.text = "Go to the next stage within " + Mathf.Round(timeValue).ToString() + "s";
+            objectiveText.text = "Go to the next stage within " + Mathf.Round(timeValue).ToString();
         }
-        if (timeStarted && timeValue < 0.1f && level == 1)
+        if (timeStarted && timeValue < 0.1f && !canSpawn)
         {
-            objectiveText.text = "Objective: Collect the key";
-        }
+            objectiveText.text = "Collect the key";
 
+
+        }
     }
 }

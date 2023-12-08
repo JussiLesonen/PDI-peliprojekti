@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] Text healthText;
 
+    public static int health = 5;
     public static bool isDead = false;
     private bool isGravityFlipped = false;
 
@@ -30,11 +32,11 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
-    float floatTimer;
+    public static float floatTimer;
     float floatCap = 1.5f;
     float floatVolume;
+    public static float damageCooldown;
 
-    
     public GameObject bluearrow;
     public GameObject redarrow;
 
@@ -46,7 +48,6 @@ public class Player : MonoBehaviour
         transform.rotation = rotation;
         Physics.SyncTransforms();
         Debug.Log("teepee");
-        
     }
 
     public float turnSmoothTime = 0.1f;
@@ -57,10 +58,22 @@ public class Player : MonoBehaviour
     private void Start()
     {
         floatTimer = floatCap;
+
+        canUseHover = false;
+        canUseAntiGrav = false;
     }
 
     void Update()
     {
+        if (damageCooldown < 0)
+        {
+            damageCooldown = 0;
+        }
+
+        damageCooldown -= Time.deltaTime;
+
+        healthText.text = "Health: " + health;
+
         jumpSound.volume = Options.masterVolume;
         floatAudio.volume = floatVolume;
         // Gravity flip
@@ -72,7 +85,7 @@ public class Player : MonoBehaviour
             gravity = isGravityFlipped ? 9.81f : -9.81f;
 
             //velocity.y = 0f;
-            
+
             //transform.eulerAngles = new Vector3(currentRotation.x, currentRotation.y, currentRotation.z + 180f);
 
             //playerCam.transform.rotation *= Quaternion.Euler(0, 0, 180);
@@ -81,7 +94,7 @@ public class Player : MonoBehaviour
         //jump
         Vector3 currentRotation = transform.eulerAngles;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        
+
         if (!isGravityFlipped)
         {
             bluearrow.SetActive(true);
@@ -109,11 +122,11 @@ public class Player : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpSound.Play();
                 //Debug.Log(velocity.y);
-               
+
             }
             if (isGravityFlipped && isGrounded)
             {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2 * -gravity)*-1;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * -gravity) * -1;
                 jumpSound.Play();
                 Debug.Log(velocity.y);
             }
@@ -160,7 +173,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && floatTimer > 0.1f && !isGrounded && canUseHover)
         {
             floatVolume = Mathf.SmoothStep(floatVolume, Options.masterVolume, Time.deltaTime * 10f);
         }
@@ -177,8 +190,6 @@ public class Player : MonoBehaviour
         {
             floatTimer = floatCap;
         }
-
-        floatValue.text = (Mathf.Round(floatTimer * 10.0f) * 0.1f).ToString();
 
         //walk
         if (!isGravityFlipped)
@@ -223,5 +234,15 @@ public class Player : MonoBehaviour
         //playerCam.m_Orbits[0].m_Height = -playerCam.m_Orbits[0].m_Height;
         //playerCam.m_Orbits[1].m_Height = -playerCam.m_Orbits[1].m_Height;
         //playerCam.m_Orbits[2].m_Height = -playerCam.m_Orbits[2].m_Height;
+    }
+    public static void AddBulletHits(int amount)
+    {
+        health = Mathf.Max(0, health - amount);
+
+        if (health <= 0)
+        {
+            isDead = true;
+            Debug.Log("Player died");
+        }
     }
 }

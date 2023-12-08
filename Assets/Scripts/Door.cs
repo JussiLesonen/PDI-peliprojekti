@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
             material.color = new Color(1, 1, 1, alpha);
         }
         else
-        {
+        {  
             GetComponent<BoxCollider>().enabled = true;
             alpha = Mathf.SmoothStep(alpha, 1, Time.deltaTime * 20f);
 
@@ -37,9 +37,27 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            ItemCollector.hasKey = false;
-            Objectives.level = 2;
-            GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text="Objectives: Collect 5 coins";
+            if (transform.name == "Door1")
+            {
+                Objectives.level = 2;
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 5 coins";
+            }
+            if (transform.name == "Door2")
+            {
+                Objectives.level = 3;
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 6 coins";
+            }
+            if (transform.name == "Door3")
+            {
+                Objectives.level = 4;
+                GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 8 coins";
+            }
+            ItemCollector.hasKey = false;      
+            //GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text="Objectives: Collect 5 coins";
+            ItemCollector.coins = 0;
+            ItemCollector.coinsText.text = ItemCollector.coins.ToString();
+            Objectives.canSpawn= true;
+            Debug.Log(Objectives.canSpawn);
         }
     }
 }
