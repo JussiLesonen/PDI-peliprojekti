@@ -4871,6 +4871,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8559244256430034760}
     m_Modifications:
     - target: {fileID: 381722492856925851, guid: d70ca19bf3fd5f543836f57bb2d118a5, type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 381722492856925851, guid: d70ca19bf3fd5f543836f57bb2d118a5, type: 3}
       propertyPath: ShapeModule.type
       value: 4
       objectReference: {fileID: 0}
