@@ -20,8 +20,18 @@ public class HealingObjectController : MonoBehaviour
                 Player.AddBulletHits(-healingAmount);
             }
 
-            gameObject.SetActive(false);
+            HealingSound.volume = Options.masterVolume;
             HealingSound.Play();
+
+            GetComponent<MeshRenderer>().enabled = false;
+
+            StartCoroutine(DestroyObject());
         }
+    }
+
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

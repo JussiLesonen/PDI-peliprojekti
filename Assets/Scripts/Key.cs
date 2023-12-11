@@ -22,6 +22,5 @@ public class Key : MonoBehaviour
         {
             Objectives.timeValue = 40;
         }
-
     }
 }

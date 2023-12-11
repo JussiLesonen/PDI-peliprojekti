@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
+    public AudioSource tickSound;
+
     void Start()
     {
         coins = 0;
@@ -24,10 +26,26 @@ public class ItemCollector : MonoBehaviour
     private void Update()
     {
         coinSound.volume = Options.masterVolume;
+        tickSound.volume = Options.masterVolume;
 
         if (coins > Customization.totalCoins)
         {
             Customization.totalCoins = coins;
+        }
+
+        if (hasKey)
+        {
+            if (!tickSound.isPlaying)
+            {
+                tickSound.Play();
+            }
+        }
+        else
+        {
+            if (tickSound.isPlaying)
+            {
+                tickSound.Stop();
+            }
         }
     }
 
