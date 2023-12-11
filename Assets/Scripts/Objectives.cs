@@ -21,6 +21,8 @@ public class Objectives : MonoBehaviour
         if (timeValue <= 0)
         {
             timeValue = 0;
+
+            ItemCollector.hasKey = false;
         }
 
         timeValue -= Time.deltaTime;
