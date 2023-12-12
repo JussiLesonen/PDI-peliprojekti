@@ -15,7 +15,7 @@ public class VolumeSlider : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void Start()
     {
-        PlayerPrefs.GetFloat(name);
+        //PlayerPrefs.GetFloat(name);
 
         if (PlayerPrefs.GetInt("Mute") == 1)
         {

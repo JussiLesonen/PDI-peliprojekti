@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Options.cs" />
+    <Compile Include="Assets\Scripts\Crown.cs" />
     <Compile Include="Assets\Scripts\Customization.cs" />
     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />

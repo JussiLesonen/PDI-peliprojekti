@@ -16,6 +16,7 @@ public class EventManager : MonoBehaviour
     public static int totalCoins;
 
     static bool resetSpawn = true;
+    static bool resetSound = true;
 
     private void Start()
     {
@@ -26,14 +27,16 @@ public class EventManager : MonoBehaviour
             resetSpawn = false;
         }
 
-        if (PlayerPrefs.GetInt("Mute") == 1)
-        {
-            Options.masterVolume = 0;
-        }
-        else if (PlayerPrefs.GetInt("Mute") == 0)
-        {
-            Options.masterVolume = VolumeSlider.volume;
-        }
+        PlayerPrefs.SetInt("Mute", 0);
+
+        //if (PlayerPrefs.GetInt("Mute") == 1)
+        //{
+        //    Options.masterVolume = 0;
+        //}
+        //else if (PlayerPrefs.GetInt("Mute") == 0)
+        //{
+        //    Options.masterVolume = VolumeSlider.volume;
+        //}
 
         if (PlayerPrefs.GetInt("Respawn") == 2)
         {
@@ -67,7 +70,7 @@ public class EventManager : MonoBehaviour
         {
             if (pauseMenu.activeSelf == false)
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.Escape) && !Crown.endGame)
                 {
                     isPaused = true;
                 }
@@ -93,7 +96,7 @@ public class EventManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
 
-            if (!Player.isDead)
+            if (!Player.isDead && !Crown.endGame)
             {
                 Cursor.lockState = CursorLockMode.Locked;
 

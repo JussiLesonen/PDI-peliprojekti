@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (health > 5)
+        {
+            health = 5;
+        }
+
         if (damageCooldown < 0)
         {
             damageCooldown = 0;
