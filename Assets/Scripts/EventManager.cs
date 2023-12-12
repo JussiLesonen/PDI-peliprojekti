@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EventManager : MonoBehaviour
 {
@@ -14,8 +15,17 @@ public class EventManager : MonoBehaviour
 
     public static int totalCoins;
 
+    static bool resetSpawn = true;
+
     private void Start()
     {
+        if (resetSpawn)
+        {
+            PlayerPrefs.SetInt("Respawn", 1);
+
+            resetSpawn = false;
+        }
+
         if (PlayerPrefs.GetInt("Mute") == 1)
         {
             Options.masterVolume = 0;
@@ -23,6 +33,22 @@ public class EventManager : MonoBehaviour
         else if (PlayerPrefs.GetInt("Mute") == 0)
         {
             Options.masterVolume = VolumeSlider.volume;
+        }
+
+        if (PlayerPrefs.GetInt("Respawn") == 2)
+        {
+            Objectives.level = 2;
+            GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 5 coins";
+        }
+        if (PlayerPrefs.GetInt("Respawn") == 3)
+        {
+            Objectives.level = 3;
+            GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 6 coins";
+        }
+        if (PlayerPrefs.GetInt("Respawn") == 4)
+        {
+            Objectives.level = 4;
+            GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>().text = "Collect 8 coins";
         }
     }
 

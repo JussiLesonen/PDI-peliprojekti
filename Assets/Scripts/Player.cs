@@ -61,6 +61,27 @@ public class Player : MonoBehaviour
 
         canUseHover = false;
         canUseAntiGrav = false;
+
+        if (PlayerPrefs.GetInt("Respawn") == 2)
+        {
+            transform.position = GameObject.Find("Lvl 2 Spawn").transform.position;
+            transform.rotation = GameObject.Find("Lvl 2 Spawn").transform.rotation;
+        }
+        else if (PlayerPrefs.GetInt("Respawn") == 3)
+        {
+            transform.position = GameObject.Find("Lvl 3 Spawn").transform.position;
+            transform.rotation = GameObject.Find("Lvl 3 Spawn").transform.rotation;
+        }
+        else if (PlayerPrefs.GetInt("Respawn") == 4)
+        {
+            transform.position = GameObject.Find("Lvl 4 Spawn").transform.position;
+            transform.rotation = GameObject.Find("Lvl 4 Spawn").transform.rotation;
+        }
+        else
+        {
+            transform.position = GameObject.Find("Lvl 1 Spawn").transform.position;
+            transform.rotation = GameObject.Find("Lvl 1 Spawn").transform.rotation;
+        }
     }
 
     void Update()
