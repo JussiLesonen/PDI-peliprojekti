@@ -10,12 +10,14 @@ public class Objectives : MonoBehaviour
     public static float timeValue = 0;
     public static int level = 1;
     bool timeStarted = false;
+
     private void Start()
     {
         objectiveText = GameObject.Find("ObjectivesText").GetComponent<TextMeshProUGUI>();
         canSpawn = true;
         level= 1;
     }
+
     void FixedUpdate()
     {
         if (timeValue <= 0)
@@ -94,8 +96,6 @@ public class Objectives : MonoBehaviour
         if (timeStarted && timeValue < 0.1f && !canSpawn)
         {
             objectiveText.text = "Collect the key";
-
-
         }
     }
 }
