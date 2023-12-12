@@ -33,7 +33,8 @@ public class HealingObjectController : MonoBehaviour
             HealingSound.volume = Options.masterVolume;
             HealingSound.Play();
 
-            GetComponent<MeshRenderer>().enabled = false;
+            transform.Find("Heart").GetComponent<MeshRenderer>().enabled = false;
+            transform.Find("Particle System").GetComponent<ParticleSystem>().Stop();
 
             StartCoroutine(DestroyObject());
         }
