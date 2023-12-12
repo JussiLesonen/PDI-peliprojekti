@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         damageCooldown -= Time.deltaTime;
 
-        healthText.text = "Health: " + health;
+        healthText.text = health.ToString();
 
         jumpSound.volume = Options.masterVolume;
         floatAudio.volume = floatVolume;
