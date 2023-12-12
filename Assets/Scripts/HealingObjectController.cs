@@ -10,6 +10,16 @@ public class HealingObjectController : MonoBehaviour
 
     [SerializeField] AudioSource HealingSound;
 
+    void FixedUpdate()
+    {
+        if (Time.timeScale > 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + Mathf.Sin(Time.time * 3) * 0.007f, transform.position.z);
+
+            transform.Rotate(0, 1, 0);
+        }
+    }
+
     [System.Obsolete]
     void OnTriggerEnter(Collider other)
     {
