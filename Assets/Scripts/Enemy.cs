@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private Vector3 originalPosition;
     public float patrolRange = 3.0f;
     [SerializeField] AudioSource ShootingSound;
+    public GameObject Gun;
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class Enemy : MonoBehaviour
     Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
     Vector3 direction = playerPosition - transform.position;
     direction.Normalize();
+    Gun.transform.LookAt(player);
 
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -68,6 +70,7 @@ public class Enemy : MonoBehaviour
     if (distanceToPlayer > stoppingDistance)
     {
         transform.Translate(direction * moveSpeed * Time.deltaTime);
+        
     }
 }
 
