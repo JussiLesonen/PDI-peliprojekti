@@ -20,6 +20,10 @@ public class Void : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+        else if (Player.isDead2)
+        {
+            timer = 0;
+        }
         else
         {
             timer = 3f;
@@ -53,6 +57,7 @@ public class Void : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Player.isDead = false;
+        Player.isDead2 = false;
 
         ItemCollector.coins = 0;
 

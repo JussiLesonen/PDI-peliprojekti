@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     public static int health = 5;
     public static bool isDead = false;
+    public static bool isDead2 = false;
     private bool isGravityFlipped = false;
 
     public CharacterController controller;
@@ -267,7 +268,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            isDead = true;
+            isDead2 = true;
             Debug.Log("Player died");
         }
     }
