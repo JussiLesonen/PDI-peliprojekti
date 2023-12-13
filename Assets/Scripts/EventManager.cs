@@ -70,7 +70,7 @@ public class EventManager : MonoBehaviour
         {
             if (pauseMenu.activeSelf == false)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) && !Crown.endGame)
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     isPaused = true;
                 }
@@ -96,7 +96,7 @@ public class EventManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
 
-            if (!Player.isDead && !Crown.endGame)
+            if (!Player.isDead)
             {
                 Cursor.lockState = CursorLockMode.Locked;
 
