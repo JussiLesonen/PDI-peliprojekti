@@ -51,9 +51,12 @@ public class Crown : MonoBehaviour
         {
             Debug.Log("You're winner!");
 
-            endGame = true;
+            if (!endGame)
+            {
+                audio.Play();
+            }
 
-            audio.Play();
+            endGame = true;
 
             //winMenu.SetActive(true);
 
