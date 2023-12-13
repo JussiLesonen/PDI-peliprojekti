@@ -62,7 +62,15 @@ public class Enemy : MonoBehaviour
     Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
     Vector3 direction = playerPosition - transform.position;
     direction.Normalize();
-    transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+    float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        float stoppingDistance = 2.0f;
+
+    if (distanceToPlayer > stoppingDistance)
+    {
+        transform.Translate(direction * moveSpeed * Time.deltaTime);
+    }
 }
 
 
