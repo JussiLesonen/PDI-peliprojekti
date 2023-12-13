@@ -40,6 +40,10 @@ public class Crown : MonoBehaviour
             transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1f, player.transform.position.z);
 
             transform.localScale = new Vector3(50f, 50f, 50f);
+
+            var sparkle = transform.Find("SparklePE");
+
+            sparkle.transform.localScale = new Vector3(0.06871825f, 0.06871825f, 0.06871825f);
         }
     }
 
