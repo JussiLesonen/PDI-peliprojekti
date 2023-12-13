@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= detectionRange)
@@ -72,7 +71,6 @@ public class Enemy : MonoBehaviour
         transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
 }
-
 
     void Patrol()
     {
