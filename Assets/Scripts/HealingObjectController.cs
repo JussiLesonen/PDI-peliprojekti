@@ -8,6 +8,8 @@ public class HealingObjectController : MonoBehaviour
 {
     public int healingAmount = 5;
 
+    bool collected = false;
+
     [SerializeField] AudioSource HealingSound;
 
     void FixedUpdate()
@@ -25,18 +27,23 @@ public class HealingObjectController : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (!Player.isDead)
+            if (!collected)
             {
-                Player.AddBulletHits(-healingAmount);
+                collected = true;
+
+                if (!Player.isDead)
+                {
+                    Player.AddBulletHits(-healingAmount);
+                }
+
+                HealingSound.volume = Options.masterVolume;
+                HealingSound.Play();
+
+                transform.Find("Heart").GetComponent<MeshRenderer>().enabled = false;
+                transform.Find("Particle System").GetComponent<ParticleSystem>().Stop();
+
+                StartCoroutine(DestroyObject());
             }
-
-            HealingSound.volume = Options.masterVolume;
-            HealingSound.Play();
-
-            transform.Find("Heart").GetComponent<MeshRenderer>().enabled = false;
-            transform.Find("Particle System").GetComponent<ParticleSystem>().Stop();
-
-            StartCoroutine(DestroyObject());
         }
     }
 
