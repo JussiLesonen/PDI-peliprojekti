@@ -41,8 +41,7 @@ public class Enemy : MonoBehaviour
             // Shoot at the player
             if (Time.time - lastShootTime > shootCooldown)
             {
-                ShootingSound.volume = Options.masterVolume;
-                ShootingSound.Play();
+                
 
                 Shoot();
                 lastShootTime = Time.time;
@@ -105,6 +104,8 @@ public class Enemy : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
             if (distanceToPlayer <= detectionRange)
             {
+                ShootingSound.volume = Options.masterVolume;
+                ShootingSound.Play();
                 GameObject bulletObj = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation) as GameObject;
                 Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
                 Vector3 shootDirection = (player.position - spawnPoint.position).normalized;
