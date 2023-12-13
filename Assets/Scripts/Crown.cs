@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Crown : MonoBehaviour
 {
-    public GameObject winMenu;
-
     public static bool endGame = false;
 
     new AudioSource audio;
@@ -57,12 +55,6 @@ public class Crown : MonoBehaviour
             }
 
             endGame = true;
-
-            //winMenu.SetActive(true);
-
-            //Time.timeScale = 0;
-
-            //Cursor.lockState = CursorLockMode.None;
         }
     }
 }
