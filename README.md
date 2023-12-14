@@ -44,7 +44,7 @@ Run the CasperGame.exe from GameExecutable folder
 link?
 
 #
-- **JussiLesonen** https://github.com/JussiLesonen
-- **TeeAr00** https://github.com/TeeAr00
-- **JuhoSoivio** https://github.com/JuhoSoivio
-- **pinjakemppainen** https://github.com/pinjakemppainen
+- **Jussi Lesonen** https://github.com/JussiLesonen
+- **Teemu Räisänen** https://github.com/TeeAr00
+- **Juho Soivio** https://github.com/JuhoSoivio
+- **Pinja Kemppainen** https://github.com/pinjakemppainen
