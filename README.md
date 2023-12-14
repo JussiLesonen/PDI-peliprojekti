@@ -23,12 +23,12 @@ Run the CasperGame.exe from GameExecutable folder
 # 
  **Features**
 
-- Teleportation.
-- Hover mechanic.
-- Upside down gravity.
-- Enemies that patrol on platforms.
-- Character customization. 
-- Objectives to gain access to next level.
+- Teleportation
+- Hover mechanic
+- Upside down gravity
+- Enemies that patrol on platforms
+- Character customization
+- Objectives to gain access to next level
 
 #
 **Controls**
@@ -37,7 +37,7 @@ Run the CasperGame.exe from GameExecutable folder
 - **Mouse** : Controls the camera
 - **TAB** : Changes the gravity
 - **Shift** : Uses hover ability
-- **ESC** : Pause the game and access main menu.
+- **ESC** : Pause the game and access main menu
 
 #
 **Link to introduction video**
