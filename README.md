@@ -29,7 +29,7 @@ Run the CasperGame.exe from GameExecutable folder
 - Enemies that patrol on platforms.
 - Character customization. 
 - Objectives to gain access to next level.
-- 
+
 #
 **Controls**
 
