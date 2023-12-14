@@ -2,13 +2,15 @@
 
 **Description**
 
-In this game you are Casper the Capsule who finds himself in space nothing but slim 
+In this game you are Casper the Capsule who finds himself in space with nothing but slim 
 platforms under him and he must maneuver himself through the levels and avoid certain death from falling.
 # 
  **Info**
 
 Basic 3D platformer made with Unity engine version 2022.3.12f1.
 Made with group that had some or none experience with Unity before.
+Some assets were downloaded from the Unity asset store such as the skybox
+and the sounds. All the 3D models were made by ourselves.
 # 
 **How to start the game**
 
