@@ -30,7 +30,7 @@ Run the CasperGame.exe from GameExecutable folder
 - Character customization. 
 - Objectives to gain access to next level.
 
-# Controls
+**Controls**
 
 - **WASD** : Moves your character
 - **Mouse** : Controls the camera
