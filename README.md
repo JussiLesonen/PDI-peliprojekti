@@ -3,7 +3,7 @@
 **Description**
 
 In this game you are Casper the Capsule who finds himself in space with nothing but slim 
-platforms under him and he must maneuver himself through the levels and avoid certain death from falling.
+platforms under him and he must maneuver himself through the levels and aquire power-ups to avoid certain death.
 # 
  **Info**
 
@@ -19,16 +19,22 @@ Clone the Repository to your PC.
 https://github.com/JussiLesonen/PDI-peliprojekti.git
 ```
 Run the CasperGame.exe from GameExecutable folder
+#
 
-# 
+
+<img align="right" width="200" src="https://github.com/JussiLesonen/PDI-peliprojekti/assets/101553529/e1260f7d-0c99-4de9-b0ce-a4c708ac6f65" />
+
+
  **Features**
-
+ 
 - Teleportation
 - Hover mechanic
 - Upside down gravity
 - Enemies that patrol on platforms
 - Character customization
 - Objectives to gain access to next level
+<br/><br/>
+
 
 #
 **Controls**
