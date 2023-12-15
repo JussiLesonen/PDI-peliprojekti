@@ -46,8 +46,8 @@ Run the CasperGame.exe from GameExecutable folder
 - **ESC** : Pause the game and access main menu
 
 #
-**Link to introduction video**
-link?
+
+[**Link to introduction video**](https://www.youtube.com/watch?v=IB98l5gPe9w)
 
 #
 - **Jussi Lesonen** https://github.com/JussiLesonen
